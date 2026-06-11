@@ -19,6 +19,7 @@ class EndpointConfig:
     feature_name: str
     feature_name_plural: str
     endpoint_name: str
+    solution_dir: str = ""
     is_command: bool = True
     http_method: str = "POST"
     route: str = ""
@@ -39,6 +40,7 @@ def load_endpoint_config(config_path: str | Path) -> EndpointConfig:
         feature_name=data["feature_name"],
         feature_name_plural=data["feature_name_plural"],
         endpoint_name=data["endpoint_name"],
+        solution_dir=data.get("solution_dir", ""),
         is_command=data.get("is_command", True),
         http_method=data.get("http_method", "POST"),
         route=data.get("route", ""),

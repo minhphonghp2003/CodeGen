@@ -6,6 +6,10 @@
 feature_name: ProductAttribute
 feature_name_plural: ProductAttributes
 endpoint_name: SetIsDeleteNew
+
+# Solution root directory. Override with -s on CLI.
+solution_dir: C:\Work\TPOSAPP
+
 is_command: true
 http_method: POST
 route: set-is-delete

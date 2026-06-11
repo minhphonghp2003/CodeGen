@@ -13,6 +13,7 @@ import yaml
 @dataclass
 class FeatureConfig:
     feature_name: str
+    solution_dir: str = ""
     domain_shared_model_folder: str = "Models\\Products"
     upsert_properties: list[list[str]] = field(default_factory=list)
     dto_properties: list[list[str]] = field(default_factory=list)
@@ -61,6 +62,7 @@ def load_config(config_path: str | Path) -> FeatureConfig:
 
     return FeatureConfig(
         feature_name=data["feature_name"],
+        solution_dir=data.get("solution_dir", ""),
         domain_shared_model_folder=data.get("domain_shared_model_folder", "Models\\Products"),
         upsert_properties=data.get("upsert_properties", []),
         dto_properties=data.get("dto_properties", []),
@@ -69,9 +71,11 @@ def load_config(config_path: str | Path) -> FeatureConfig:
     )
 
 
-def resolve_solution_dir(config_path: str | Path, solution_dir: str | None = None) -> Path:
-    """Resolve the solution directory from config or explicit override."""
+def resolve_solution_dir(config_path: str | Path, solution_dir: str | None = None, config_solution_dir: str = "") -> Path:
+    """Resolve the solution directory. Priority: CLI arg > YAML config > default."""
     if solution_dir:
         return Path(solution_dir)
+    if config_solution_dir:
+        return Path(config_solution_dir).resolve()
     # Default: parent of the config file's parent (simulating T4's Host.TemplateFile logic)
     return Path(config_path).resolve().parent.parent

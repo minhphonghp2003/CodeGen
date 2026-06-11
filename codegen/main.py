@@ -41,7 +41,7 @@ def feature_cmd(
       codegen feature config/example.yaml --dry-run
     """
     cfg = load_config(config_path)
-    sol = resolve_solution_dir(config_path, solution_dir)
+    sol = resolve_solution_dir(config_path, solution_dir, cfg.solution_dir)
 
     click.echo(f"Feature:  {cfg.feature_name}")
     click.echo(f"Solution: {sol}")
@@ -83,7 +83,7 @@ def endpoint_cmd(
       codegen endpoint config/endpoint_set_is_delete.yaml --dry-run
     """
     cfg = load_endpoint_config(config_path)
-    sol = resolve_solution_dir(config_path, solution_dir)
+    sol = resolve_solution_dir(config_path, solution_dir, cfg.solution_dir)
 
     click.echo(f"Feature:   {cfg.feature_name}")
     click.echo(f"Endpoint:  {cfg.endpoint_name}")

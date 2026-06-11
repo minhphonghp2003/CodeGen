@@ -3,6 +3,9 @@
 
 feature_name: ProductAttribute
 
+# Solution root directory. Override with -s on CLI.
+solution_dir: C:\Work\TPOSAPP
+
 # Keep Domain.Shared for now. Example for ProductCategory: "Models\\Products"
 domain_shared_model_folder: "Models\\Products"
 

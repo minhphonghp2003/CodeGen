@@ -2,6 +2,9 @@
 
 feature_name: ProductCategory
 
+# Solution root directory. Override with -s on CLI.
+solution_dir: C:\Work\TPOSAPP
+
 domain_shared_model_folder: "Models\\Products"
 
 upsert_properties:

@@ -3,6 +3,10 @@
 feature_name: ProductAttribute
 feature_name_plural: ProductAttributes
 endpoint_name: GetDetail
+
+# Solution root directory. Override with -s on CLI.
+solution_dir: C:\Work\TPOSAPP
+
 is_command: false
 http_method: GET
 route: "{id}"
