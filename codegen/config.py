@@ -13,16 +13,13 @@ import yaml
 @dataclass
 class FeatureConfig:
     feature_name: str
+    feature_name_plural: str = ""
     solution_dir: str = ""
     domain_shared_model_folder: str = "Models\\Products"
     upsert_properties: list[list[str]] = field(default_factory=list)
     dto_properties: list[list[str]] = field(default_factory=list)
     get_all_filters: list[list[str]] = field(default_factory=list)
     dry_run: bool = False
-
-    @property
-    def feature_name_plural(self) -> str:
-        return self.feature_name + "s"
 
     @property
     def entity_name(self) -> str:
@@ -60,8 +57,14 @@ def load_config(config_path: str | Path) -> FeatureConfig:
     with open(path, "r", encoding="utf-8") as f:
         data: dict[str, Any] = yaml.safe_load(f)
 
+    feature_name = data["feature_name"]
+    feature_name_plural = data.get("feature_name_plural", "")
+    if not feature_name_plural:
+        feature_name_plural = feature_name + "s"
+
     return FeatureConfig(
-        feature_name=data["feature_name"],
+        feature_name=feature_name,
+        feature_name_plural=feature_name_plural,
         solution_dir=data.get("solution_dir", ""),
         domain_shared_model_folder=data.get("domain_shared_model_folder", "Models\\Products"),
         upsert_properties=data.get("upsert_properties", []),

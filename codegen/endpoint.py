@@ -17,8 +17,8 @@ TEMPLATE_DIR = Path(__file__).parent.parent / "templates" / "endpoint"
 @dataclass
 class EndpointConfig:
     feature_name: str
-    feature_name_plural: str
-    endpoint_name: str
+    feature_name_plural: str = ""
+    endpoint_name: str = ""
     solution_dir: str = ""
     is_command: bool = True
     http_method: str = "POST"
@@ -36,9 +36,14 @@ def load_endpoint_config(config_path: str | Path) -> EndpointConfig:
     with open(path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
+    feature_name = data["feature_name"]
+    feature_name_plural = data.get("feature_name_plural", "")
+    if not feature_name_plural:
+        feature_name_plural = feature_name + "s"
+
     return EndpointConfig(
-        feature_name=data["feature_name"],
-        feature_name_plural=data["feature_name_plural"],
+        feature_name=feature_name,
+        feature_name_plural=feature_name_plural,
         endpoint_name=data["endpoint_name"],
         solution_dir=data.get("solution_dir", ""),
         is_command=data.get("is_command", True),

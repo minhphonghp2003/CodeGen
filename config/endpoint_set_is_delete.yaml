@@ -3,8 +3,8 @@
 #
 # This adds a custom CQRS endpoint to an existing feature.
 
-feature_name: ProductAttribute
-feature_name_plural: ProductAttributes
+feature_name: ProductCategory
+feature_name_plural: ProductCategories
 endpoint_name: SetIsDeleteNew
 
 # Solution root directory. Override with -s on CLI.

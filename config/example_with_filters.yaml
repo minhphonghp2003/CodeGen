@@ -1,6 +1,7 @@
 # Example: ProductCategory with name filter
 
 feature_name: ProductCategory
+feature_name_plural: ProductCategories
 
 # Solution root directory. Override with -s on CLI.
 solution_dir: C:\Work\TPOSAPP

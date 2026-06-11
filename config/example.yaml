@@ -2,6 +2,8 @@
 # Equivalent to the CONFIGURATION section in NewFeatureScaffold.tt
 
 feature_name: ProductAttribute
+# Irregular plural. Default: feature_name + "s"
+feature_name_plural: ProductAttributes
 
 # Solution root directory. Override with -s on CLI.
 solution_dir: C:\Work\TPOSAPP
@@ -10,23 +12,18 @@ solution_dir: C:\Work\TPOSAPP
 domain_shared_model_folder: "Models\\Products"
 
 # DTO properties: [Type, Name, IsRequired, DefaultValue]
-upsert_properties: []
-# Example:
-# upsert_properties:
-#   - ["string", "Name", "true", ""]
+upsert_properties:
+  - ["string", "Name", "true", ""]
+  - ["string", "Code", "false", "string.Empty"]
 
-# DTO properties: [Type, Name, IsRequired, DefaultValue]
-dto_properties: []
-# Example:
-# dto_properties:
-#   - ["long", "Id", "true", ""]
-#   - ["string", "Name", "true", "string.Empty"]
+dto_properties:
+  - ["long", "Id", "true", ""]
+  - ["string", "Name", "true", ""]
+  - ["string", "Code", "true", ""]
 
 # Optional filters for GetAll. Leave empty for only TPosPagedRequest.
 # Each filter: [Type, Name, BindingSource]
-get_all_filters: []
-# Example:
-# get_all_filters:
-#   - ["string?", "name", "FromQuery"]
+get_all_filters:
+  - ["string?", "code", "FromQuery"]
 
 dry_run: false
