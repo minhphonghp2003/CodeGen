@@ -1,0 +1,58 @@
+# ============================================================
+# FEATURE SCAFFOLD CONFIG
+# ============================================================
+# Generates a full CQRS feature (entity, DTOs, services, handlers,
+# validators, cache, controller, EF mapping, etc.)
+#
+# Usage:
+#   codegen feature config/feature.yaml -s D:\Projects\MyErp6
+# ============================================================
+
+# Feature name (singular, PascalCase)
+feature_name: ProductAttribute
+
+# Plural form. Default: feature_name + "s"
+# Use this for irregular plurals: category -> categories
+feature_name_plural: ProductAttributes
+
+# Solution root directory (optional, override with -s on CLI)
+solution_dir: C:\Work\TPOSAPP
+
+# Where to put the entity model in Domain.Shared
+domain_shared_model_folder: Models\\Products
+
+# ------------------------------------------------------------
+# UPSERT DTO (Create/Update input)
+# Format: [Type, Name, IsRequired, DefaultValue]
+# IsRequired adds: [Required] attribute + required keyword
+# DefaultValue is appended after = (leave "" for none)
+# ------------------------------------------------------------
+upsert_properties:
+  - ["string", "Name", "true", ""]
+  - ["string", "Code", "false", ""]
+  - ["int", "Sequence", "false", ""]
+  # - ["int", "SortOrder", "false", "0"]
+  # - ["bool", "IsActive", "true", "true"]
+
+# ------------------------------------------------------------
+# READ DTO (output/response)
+# Format: [Type, Name, IsRequired, DefaultValue]
+# ------------------------------------------------------------
+dto_properties:
+  - ["long", "Id", "true", ""]
+  - ["string", "Name", "true", ""]
+  - ["string", "Code", "false", ""]
+  - ["int", "Sequence", "false", ""]
+  - ["bool", "CreateVariant", "false", "true"]
+
+# ------------------------------------------------------------
+# GET ALL FILTERS (optional query params for paged list)
+# Format: [Type, Name, BindingSource]
+# BindingSource: FromQuery (default), FromRoute, FromBody
+# Leave empty for TPosPagedRequest only.
+# ------------------------------------------------------------
+get_all_filters:
+  # - ["string?", "name", "FromQuery"]
+  # - ["long?", "parentId", "FromQuery"]
+
+dry_run: false

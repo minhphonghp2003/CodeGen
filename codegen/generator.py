@@ -15,6 +15,7 @@ from .helpers import (
     build_filter_ctor_params,
     build_filter_predicate,
     build_filter_service_params,
+    nullable_type,
     to_camel_case,
     to_kebab_case,
     to_pascal_case,
@@ -69,6 +70,7 @@ def _create_env() -> Environment:
     env.filters["to_pascal_case"] = to_pascal_case
     env.filters["to_kebab_case"] = to_kebab_case
     env.filters["split_words"] = split_words
+    env.filters["nullable_type"] = nullable_type
     return env
 
 

@@ -76,3 +76,25 @@ def build_filter_predicate(filters: list[list[str]]) -> str:
 
 def make_relative(base_dir: str, full_path: str) -> str:
     return full_path.replace(base_dir + "\\", "").replace(base_dir + "/", "")
+
+
+# C# value types that need ? when not required
+_VALUE_TYPES = frozenset({
+    "bool", "byte", "sbyte", "char", "decimal", "double", "float",
+    "int", "uint", "long", "ulong", "short", "ushort",
+    "DateTime", "DateTimeOffset", "Guid", "DateOnly", "TimeOnly",
+})
+
+
+def nullable_type(type_name: str, is_required: bool) -> str:
+    """Return the type string, appending ? for non-required value types.
+
+    Reference types (string, object, etc.) are left as-is since they're
+    already nullable in C# reference semantics.
+    """
+    if is_required:
+        return type_name
+    clean = type_name.rstrip("?")
+    if clean in _VALUE_TYPES:
+        return clean + "?"
+    return type_name

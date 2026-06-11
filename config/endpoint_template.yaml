@@ -1,0 +1,69 @@
+# ============================================================
+# ENDPOINT SCAFFOLD CONFIG
+# ============================================================
+# Adds a custom CQRS endpoint to an existing feature.
+# Creates: command/query record, DTO (if needed), validator (if command)
+# Appends: handler method, service interface method, service method,
+#          controller action
+#
+# Usage:
+#   codegen endpoint config/endpoint.yaml -s D:\Projects\MyErp6
+# ============================================================
+
+# Feature this endpoint belongs to
+feature_name: ProductCategory
+feature_name_plural: ProductCategories
+
+# Endpoint name (PascalCase, verb+noun)
+# Becomes: {endpoint_name}Command or {endpoint_name}Query
+endpoint_name: SetIsDeleteNew
+
+# Solution root directory (optional, override with -s on CLI)
+solution_dir: D:\Projects\MyErp6
+
+# true = Command (write), false = Query (read)
+is_command: true
+
+# HTTP method: GET, POST, PUT, DELETE
+http_method: POST
+
+# Route suffix appended to the controller base route (leave "" for none)
+route: set-is-delete
+
+# ------------------------------------------------------------
+# RESPONSE TYPE
+# ------------------------------------------------------------
+# Response data type. Empty = TPosResult (no payload).
+# Examples: "ProductCategoryDto", "List<ProductCategoryDto>", ""
+response_data_type: ""
+
+# ------------------------------------------------------------
+# INPUT MODE (pick ONE, in priority order)
+# ------------------------------------------------------------
+
+# 1. input_params — multiple primitive params (e.g., FromRoute + FromQuery)
+#    Format: [Type, Name, BindingSource, IsRequired]
+#    BindingSource: FromRoute, FromQuery, FromBody (auto if empty)
+input_params:
+  - ["List<int>", "ids", "FromBody", "true"]
+  - ["bool", "isDelete", "FromBody", "true"]
+# input_params: []
+
+# 2. input_dto_name — reuse an existing DTO class (no generation)
+# input_dto_name: UpsertProductCategoryDto
+
+# 3. input_properties — auto-generate a new {EndpointName}InputDto
+#    Format: [Type, Name, IsRequired]
+# input_properties:
+#   - ["string", "Name", "true"]
+#   - ["int", "SortOrder", "false"]
+
+# ------------------------------------------------------------
+# VALIDATOR RULES (optional, command only)
+# Format: [FieldName, RuleKind, MessageKey, Value?]
+# RuleKind: Required, MaxLength
+# ------------------------------------------------------------
+validation_rules:
+  - ["ids", "Required", "ValidationMessageKeys.IdsRequired", ""]
+
+dry_run: false

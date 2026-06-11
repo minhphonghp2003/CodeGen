@@ -9,7 +9,7 @@ namespace MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos
         /// <summary>
         /// Gets the {{ split_words(prop[1])|lower }}.
         /// </summary>
-        public {% if prop[2] == "true" %}required {% endif %}{{ prop[0] }} {{ to_pascal_case(prop[1]) }} { get; init; }{% if prop[3] %} = {{ prop[3] }};{% endif %}
+        public {% if prop[2] == "true" %}required {% endif %}{{ prop[0]|nullable_type(prop[2] == "true") }} {{ to_pascal_case(prop[1]) }} { get; init; }{% if prop[3] %} = {{ prop[3] }};{% endif %}
 
 {% endfor %}
     }
