@@ -185,6 +185,21 @@ def _build_context(cfg: EndpointConfig) -> dict:
             return "MaximumLength"
         return kind
 
+    # Precompute validation rules for Jinja2
+    computed_rules = []
+    for rule in cfg.validation_rules:
+        target = validator_target(rule[0])
+        kind = validator_kind(rule[1])
+        message_key = rule[2] if len(rule) > 2 else ""
+        max_value = rule[3] if len(rule) > 3 else "256"
+        computed_rules.append({
+            "target": target,
+            "kind": kind,
+            "original_kind": rule[1],
+            "message_key": message_key,
+            "max_value": max_value,
+        })
+
     return {
         # Core names
         "feature_name": cfg.feature_name,
@@ -198,6 +213,7 @@ def _build_context(cfg: EndpointConfig) -> dict:
         "input_properties": cfg.input_properties,
         "input_params": cfg.input_params,
         "validation_rules": cfg.validation_rules,
+        "computed_rules": computed_rules,
         # Derived
         "use_case": use_case,
         "folder": folder,
