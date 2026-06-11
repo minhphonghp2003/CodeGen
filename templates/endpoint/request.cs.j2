@@ -1,0 +1,14 @@
+{% if is_command %}using MyErp6.Application.Contracts.Behaviors;
+{% else %}using TmtCo.Mediator;
+{% endif %}using MyErp6.Domain.Shared.TPosResult;
+{% if generate_input_dto %}
+using MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos;
+{% endif %}
+
+namespace TMT.MyErp6.{{ use_case }}.{{ feature_name_plural }}.{{ folder }}
+{
+    /// <summary>
+    /// Executes the {{ endpoint_name }} endpoint for {{ feature_name_plural }}.
+    /// </summary>
+    public record {{ request_name }}({{ request_ctor_params }}) : {{ request_type_interface }};
+}

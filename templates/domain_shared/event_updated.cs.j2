@@ -1,0 +1,31 @@
+using MyERP.Domain.Events;
+using MyERP.Domain.Shared.Users;
+using MyERP.Events.Bus.Entities;
+
+namespace MyErp6.Domain.Shared.Events.{{ feature_name_plural }}
+{
+    /// <summary>
+    /// Domain event data raised when a {{ feature_lower }} is updated.
+    /// </summary>
+    public sealed class {{ feature_name }}UpdatedEventData<TEntity> : EntityUpdatedEventData<TEntity>, IEntityUpdatedEventData
+    {
+        /// <summary>
+        /// Creates event data for a {{ feature_lower }} updated event.
+        /// </summary>
+        public {{ feature_name }}UpdatedEventData(string host, TEntity entity, CurrentUserDto user) : base(entity)
+        {
+            Host = host;
+            Updator = user;
+        }
+
+        /// <summary>
+        /// Gets the user who caused the event.
+        /// </summary>
+        public CurrentUserDto Updator { get; set; }
+
+        /// <summary>
+        /// Gets the host where the event was raised.
+        /// </summary>
+        public string Host { get;}
+    }
+}

@@ -1,0 +1,27 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MyErp6.Domain.Shared.TPosResult;
+{% if generate_input_dto %}
+using MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos;
+{% endif %}
+using TMT.MyErp6.{{ use_case }}.{{ feature_name_plural }}.{{ folder }};
+using TmtCo.Mediator;
+
+namespace MyErp6.HttpApi.Public.PublicControllers
+{
+    /// <summary>
+    /// Public API endpoints for {{ feature_name_plural }}.
+    /// </summary>
+    [ApiController]
+    [Authorize]
+    [Route("api/erp-core/v{version:apiVersion}/{{ kebab_feature_route }}")]
+    public class {{ feature_name }}Controller(IMediator mediator) : PublicControllerBase(mediator)
+    {
+        /// <summary>
+        /// Executes {{ endpoint_name }} for {{ feature_name_plural }}.
+        /// </summary>
+        [{{ http_attribute }}{{ route_attribute }}]
+        public async Task<{{ tpos_result_type }}> {{ endpoint_name }}Async({{ controller_params }})
+            => await Mediator.Send(new {{ request_name }}({{ request_ctor_args }}), cancellationToken);
+    }
+}

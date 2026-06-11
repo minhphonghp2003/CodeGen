@@ -1,0 +1,20 @@
+using TMT.MyErp6.Domain.Common;
+
+namespace TMT.MyErp6.Domain.{{ feature_name_plural }}.Rules
+{
+    /// <summary>
+    /// Business rule for {{ feature_name_plural }}.
+    /// </summary>
+    public sealed class {{ feature_name }}BusinessRule : IBusinessRule
+    {
+        /// <summary>
+        /// Gets the error message when the rule is broken.
+        /// </summary>
+        public string Message => string.Empty;
+
+        /// <summary>
+        /// Returns true when the rule is broken.
+        /// </summary>
+        public bool IsBroken() => false;
+    }
+}

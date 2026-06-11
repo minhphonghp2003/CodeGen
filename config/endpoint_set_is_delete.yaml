@@ -1,0 +1,33 @@
+# Endpoint scaffold configuration
+# Equivalent to the CONFIGURATION section in EndpointScaffold.tt
+#
+# This adds a custom CQRS endpoint to an existing feature.
+
+feature_name: ProductAttribute
+feature_name_plural: ProductAttributes
+endpoint_name: SetIsDeleteNew
+is_command: true
+http_method: POST
+route: set-is-delete
+
+# Response type. Empty = TPosResult (no data).
+# response_data_type: ProductAttributeDto
+
+# Input DTO name. Empty = auto-generate from inputProperties.
+input_dto_name: ""
+
+# Input properties for auto-generated DTO: [Type, Name, IsRequired]
+input_properties:
+  - ["List<int>", "ids", "true"]
+  - ["bool", "isDelete", "true"]
+
+# Alternative: multi-param input (overrides inputProperties)
+# Each param: [Type, Name, BindingSource, IsRequired]
+input_params: []
+
+# Validator rules: [Name, Kind, MessageKey, Value?]
+# Kind: Required, MaxLength
+validation_rules:
+  - ["ids", "Required", "ValidationMessageKeys.IdsRequired", ""]
+
+dry_run: false

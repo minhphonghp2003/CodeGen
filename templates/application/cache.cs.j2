@@ -1,0 +1,26 @@
+using MyErp6.Application.Contracts;
+using MyErp6.Application.Contracts.Caching;
+using MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos;
+using MyErp6.Application.Contracts.Repositories;
+using MyErp6.Domain.Shared.Exceptions;
+using MyErp6.Domain.Shared.Localization;
+using TMT.MyErp6.Application.Caching;
+using TMT.MyErp6.AutoMapper;
+using TMT.MyErp6.Domain.Shared.Models;
+using ZiggyCreatures.Caching.Fusion;
+
+namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Caches
+{
+    /// <summary>
+    /// FusionCache-backed cache for {{ feature_name_plural }}.
+    /// </summary>
+    public sealed class {{ feature_name }}Cache(IFusionCache _fusionCache, ICurrentTenant _currentTenant, IReadRepositoryAsync<{{ entity_name }}, long> _repository)
+        : MyErp6EntityCacheBase<{{ model_name }}, long>(_fusionCache, _currentTenant, "clientside@" + nameof({{ feature_name }}).ToLower() + "s"), I{{ feature_name }}Cache
+    {
+        protected override {{ model_name }}? LoadFromDataSource(long id)
+            => MyErp6Mapper.Map<{{ entity_name }}, {{ model_name }}>(_repository.Get(id));
+
+        protected override async Task<{{ model_name }}?> LoadFromDataSourceAsync(long id, CancellationToken cancellationToken)
+            => MyErp6Mapper.Map<{{ entity_name }}?, {{ model_name }}>(await _repository.FirstOrDefaultAsync(e => e.Id == id, cancellationToken));
+    }
+}

@@ -1,0 +1,29 @@
+# Feature scaffold configuration
+# Equivalent to the CONFIGURATION section in NewFeatureScaffold.tt
+
+feature_name: ProductAttribute
+
+# Keep Domain.Shared for now. Example for ProductCategory: "Models\\Products"
+domain_shared_model_folder: "Models\\Products"
+
+# DTO properties: [Type, Name, IsRequired, DefaultValue]
+upsert_properties: []
+# Example:
+# upsert_properties:
+#   - ["string", "Name", "true", ""]
+
+# DTO properties: [Type, Name, IsRequired, DefaultValue]
+dto_properties: []
+# Example:
+# dto_properties:
+#   - ["long", "Id", "true", ""]
+#   - ["string", "Name", "true", "string.Empty"]
+
+# Optional filters for GetAll. Leave empty for only TPosPagedRequest.
+# Each filter: [Type, Name, BindingSource]
+get_all_filters: []
+# Example:
+# get_all_filters:
+#   - ["string?", "name", "FromQuery"]
+
+dry_run: false

@@ -1,0 +1,31 @@
+using MyERP.Domain.Events;
+using MyERP.Domain.Shared.Users;
+using MyERP.Events.Bus.Entities;
+
+namespace MyErp6.Domain.Shared.Events.{{ feature_name_plural }}
+{
+    /// <summary>
+    /// Domain event data raised when a {{ feature_lower }} is created.
+    /// </summary>
+    public sealed class {{ feature_name }}CreatedEventData<TEntity> : EntityCreatedEventData<TEntity>, IEntityCreatedEventData
+    {
+        /// <summary>
+        /// Creates event data for a {{ feature_lower }} created event.
+        /// </summary>
+        public {{ feature_name }}CreatedEventData(string host, TEntity entity, CurrentUserDto user) : base(entity)
+        {
+            Host = host;
+            Creator = user;
+        }
+
+        /// <summary>
+        /// Gets the user who caused the event.
+        /// </summary>
+        public CurrentUserDto Creator { get; set; }
+
+        /// <summary>
+        /// Gets the host where the event was raised.
+        /// </summary>
+        public string Host { get;}
+    }
+}

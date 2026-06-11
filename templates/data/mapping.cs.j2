@@ -1,0 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using TMT.MyErp6.Domain.Shared.Models;
+
+namespace MyErp6.Data.Mappings
+{
+    /// <summary>
+    /// EF Core mapping for {{ feature_name_plural }}.
+    /// </summary>
+    public sealed class {{ feature_name }}Map : IEntityTypeConfiguration<{{ entity_name }}>
+    {
+        /// <summary>
+        /// Configures the {{ feature_lower }} table mapping.
+        /// </summary>
+        public void Configure(EntityTypeBuilder<{{ entity_name }}> builder)
+        {
+            builder.HasKey(x => x.Id);
+        }
+    }
+}

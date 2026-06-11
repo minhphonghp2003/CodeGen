@@ -1,0 +1,22 @@
+using MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos;
+using MyErp6.Domain.Shared.TPosRequest;
+using MyErp6.Domain.Shared.TPosResult;
+
+namespace MyErp6.Application.Contracts.{{ feature_name_plural }}
+{
+    /// <summary>
+    /// Defines read operations for {{ feature_name_plural }}.
+    /// </summary>
+    public interface I{{ feature_name }}QueryService
+    {
+        /// <summary>
+        /// Gets a {{ feature_lower }} by identifier.
+        /// </summary>
+        Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id);
+
+        /// <summary>
+        /// Gets a paged list of {{ feature_name_plural }}.
+        /// </summary>
+        Task<TPosPagedResult<{{ model_name }}>> GetAllAsync({{ filter_service_params }}TPosPagedRequest pagedRequest, CancellationToken cancellationToken);
+    }
+}

@@ -1,0 +1,31 @@
+using FluentValidation;
+using Microsoft.Extensions.Localization;
+using MyErp6.Domain.Shared.Localization;
+using MyErp6.Application.Contracts.Repositories;
+using TmtCo.Localization;
+using TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}.Commands;
+
+namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Validators
+{
+    /// <summary>
+    /// Validates {{ request_name }} before it reaches the command handler.
+    /// </summary>
+    public sealed class {{ request_name }}Validator : AbstractValidator<{{ request_name }}>
+    {
+        /// <summary>
+        /// Builds localized validation rules for {{ request_name }}.
+        /// </summary>
+        public {{ request_name }}Validator(IStringLocalizer<ValidationMessages> L)
+        {
+{% for rule in validation_rules %}
+            RuleFor(x => {{ validator_target(rule[0]) }})
+                .{{ rule_kind(rule[1]) }}{% if rule[1] == "MaxLength" %}({{ rule[3] if rule|length > 3 else "256" }}){% endif %}
+{% if rule[2] %}
+                .WithMessage(_ => L[{{ rule[2] }}]);
+{% else %};
+{% endif %}
+
+{% endfor %}
+        }
+    }
+}

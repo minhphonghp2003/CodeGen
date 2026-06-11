@@ -1,0 +1,21 @@
+using FluentValidation;
+using Microsoft.Extensions.Localization;
+using MyErp6.Domain.Shared.Localization;
+using TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}.Commands;
+using TmtCo.Localization;
+
+namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Validators
+{
+    /// <summary>
+    /// Validates Create{{ feature_name }}Command.
+    /// </summary>
+    public sealed class Create{{ feature_name }}CommandValidator : AbstractValidator<Create{{ feature_name }}Command>
+    {
+        /// <summary>
+        /// Builds localized validation rules.
+        /// </summary>
+        public Create{{ feature_name }}CommandValidator(IStringLocalizer<ValidationMessages> L)
+        {
+        }
+    }
+}

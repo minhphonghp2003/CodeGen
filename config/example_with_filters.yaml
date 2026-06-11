@@ -1,0 +1,19 @@
+# Example: ProductCategory with name filter
+
+feature_name: ProductCategory
+
+domain_shared_model_folder: "Models\\Products"
+
+upsert_properties:
+  - ["string", "Name", "true", ""]
+  - ["string", "Code", "false", "string.Empty"]
+
+dto_properties:
+  - ["long", "Id", "true", ""]
+  - ["string", "Name", "true", ""]
+  - ["string", "Code", "true", ""]
+
+get_all_filters:
+  - ["string?", "name", "FromQuery"]
+
+dry_run: false

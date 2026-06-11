@@ -1,0 +1,11 @@
+using MyErp6.Application.Contracts.Behaviors;
+using MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos;
+using MyErp6.Domain.Shared.TPosResult;
+
+namespace TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}.Commands
+{
+    /// <summary>
+    /// Updates a {{ feature_lower }} by identifier.
+    /// </summary>
+    public record Update{{ feature_name }}Command(long Id, {{ upsert_dto_name }} Model) : ICommand<TPosResult>;
+}

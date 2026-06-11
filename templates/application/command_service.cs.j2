@@ -1,0 +1,51 @@
+using MyErp6.Application.Contracts;
+using MyErp6.Application.Contracts.{{ feature_name_plural }};
+using MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos;
+using MyErp6.Application.Contracts.Repositories;
+using MyErp6.Domain.Shared.Events.{{ feature_name_plural }};
+using MyErp6.Domain.Shared.Exceptions;
+using MyErp6.Domain.Shared.Localization;
+using MyErp6.Domain.Shared.TPosResult;
+using TMT.MyErp6.AutoMapper;
+using TMT.MyErp6.Domain.{{ feature_name_plural }}.Services;
+using TMT.MyErp6.Domain.Shared.Models;
+using TmtCo.Mediator;
+
+namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
+{
+    /// <summary>
+    /// Implements write operations for {{ feature_name_plural }}.
+    /// </summary>
+    public sealed class {{ feature_name }}CommandService(
+        IMediator _mediator,
+        IWriteRepositoryAsync<{{ entity_name }}, long> _repository,
+        IReadRepositoryAsync<{{ entity_name }}, long> _readRepository,
+        I{{ feature_name }}DomainService _domainService,
+        IMyErp6ApplicationBaseService _baseService
+        ) : MyErp6ApplicationWriteService<{{ entity_name }}, long>(_mediator, _repository, _baseService), I{{ feature_name }}CommandService
+    {
+        /// <summary>
+        /// Creates a new {{ feature_lower }}.
+        /// </summary>
+        public async Task<TPosResult<{{ model_name }}>> CreateAsync({{ upsert_dto_name }} model, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Updates an existing {{ feature_lower }}.
+        /// </summary>
+        public async Task<TPosResult> UpdateAsync(long id, {{ upsert_dto_name }} model, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Deletes a {{ feature_lower }} by identifier.
+        /// </summary>
+        public async Task<TPosResult> DeleteByIdAsync(long id, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

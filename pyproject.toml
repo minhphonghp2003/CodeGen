@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "codegen"
+version = "0.1.0"
+description = "T4-style CQRS feature scaffold generator using Python + Jinja2"
+requires-python = ">=3.10"
+dependencies = [
+    "jinja2>=3.1",
+    "pyyaml>=6.0",
+    "click>=8.1",
+]
+
+[project.scripts]
+codegen = "codegen.main:cli"
+
+[tool.setuptools.packages.find]
+include = ["codegen*"]

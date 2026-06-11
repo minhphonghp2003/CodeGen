@@ -1,0 +1,19 @@
+# Endpoint with route params (e.g., GET by ID)
+
+feature_name: ProductAttribute
+feature_name_plural: ProductAttributes
+endpoint_name: GetDetail
+is_command: false
+http_method: GET
+route: "{id}"
+
+response_data_type: ProductAttributeDto
+
+input_dto_name: ""
+input_properties: []
+input_params:
+  - ["long", "id", "FromRoute", "true"]
+
+validation_rules: []
+
+dry_run: false

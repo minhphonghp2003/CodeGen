@@ -1,0 +1,27 @@
+using MyErp6.Application.Contracts.Caching;
+using MyErp6.Domain.Shared.Events.{{ feature_name_plural }};
+using TMT.MyErp6.Application.Events;
+using TMT.MyErp6.Domain.Shared.Models;
+using TmtCo.Mediator;
+
+namespace TMT.MyErp6.Application.{{ feature_name_plural }}.EventHandlers;
+
+/// <summary>
+/// Removes cached {{ feature_name_plural }} when write events are published.
+/// </summary>
+public sealed class {{ feature_name }}CacheNotificationHandler(I{{ feature_name }}Cache _cache) :
+    INotificationHandler<TmtCoDomainEventNotification<{{ feature_name }}UpdatedEventData<{{ entity_name }}>>>,
+    INotificationHandler<TmtCoDomainEventNotification<{{ feature_name }}DeletedEventData<{{ entity_name }}>>>
+{
+    /// <summary>
+    /// Removes cache when a {{ feature_lower }} is updated.
+    /// </summary>
+    public async Task Handle(TmtCoDomainEventNotification<{{ feature_name }}UpdatedEventData<{{ entity_name }}>> notification, CancellationToken cancellationToken)
+        => await _cache.RemoveAsync(notification.DomainEvent.Entity.Id, cancellationToken);
+
+    /// <summary>
+    /// Removes cache when a {{ feature_lower }} is deleted.
+    /// </summary>
+    public async Task Handle(TmtCoDomainEventNotification<{{ feature_name }}DeletedEventData<{{ entity_name }}>> notification, CancellationToken cancellationToken)
+            => await _cache.RemoveAsync(notification.DomainEvent.Entity.Id, cancellationToken);
+}
