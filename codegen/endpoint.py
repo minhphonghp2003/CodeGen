@@ -303,7 +303,7 @@ def generate_endpoint(
     if cfg.is_command:
         tpl = env.get_template("validator.cs.j2")
         content = tpl.render(ctx)
-        val_path = solution / "TMT.MyErp6.Application" / cfg.feature_name_plural / "Validators" / f"{request_name}Validator.cs"
+        val_path = solution / "TMT.MyErp6.Application" / "Features" / cfg.feature_name_plural / "Validators" / f"{request_name}Validator.cs"
         results.append(upsert_member(val_path, f"class {request_name}Validator", content, "", None, solution, dry_run))
 
     # 4. Handler (append or create)
@@ -350,7 +350,7 @@ def generate_endpoint(
     ))
 
     # 6. Service class (append or create)
-    svc_file = solution / "TMT.MyErp6.Application" / cfg.feature_name_plural / "Services" / f"{service_class_name}.cs"
+    svc_file = solution / "TMT.MyErp6.Application" / "Features" / cfg.feature_name_plural / "Services" / f"{service_class_name}.cs"
     tpl_svc = env.get_template("service_method.cs.j2")
     svc_method = tpl_svc.render(ctx)
 

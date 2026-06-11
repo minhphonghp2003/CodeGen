@@ -17,15 +17,6 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Validators
         /// </summary>
         public {{ request_name }}Validator(IStringLocalizer<ValidationMessages> L)
         {
-{% for rule in computed_rules %}
-            RuleFor(x => {{ rule.target }})
-                .{{ rule.kind }}{% if rule.original_kind == "MaxLength" %}({{ rule.max_value }}){% endif %}
-
-{% if rule.message_key %}
-                .WithMessage(_ => L[{{ rule.message_key }}]);
-{% endif %}
-
-{% endfor %}
         }
     }
 }
