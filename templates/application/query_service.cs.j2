@@ -14,7 +14,7 @@ using TMT.MyErp6.Domain.Shared.Models;
 namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
 {
     /// <summary>
-    /// Implements read operations for {{ feature_name_plural }}.
+    /// Triển khai các thao tác đọc cho {{ feature_name_plural }}.
     /// </summary>
     public sealed class {{ feature_name }}QueryService(
         IReadRepositoryAsync<{{ entity_name }}> _repository,
@@ -23,7 +23,7 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
         ) : MyErp6ApplicationReadService<{{ entity_name }}>(_repository, _baseService), I{{ feature_name }}QueryService
     {
         /// <summary>
-        /// Gets a paged list of {{ feature_name_plural }}.
+        /// Lấy danh sách phân trang của {{ feature_name_plural }}.
         /// </summary>
         public async Task<TPosPagedResult<{{ model_name }}>> GetAllAsync({{ filter_service_params }}TPosPagedRequest pagedRequest, CancellationToken cancellationToken)
         {
@@ -38,7 +38,7 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
         }
 
         /// <summary>
-        /// Gets a {{ feature_lower }} by identifier.
+        /// Lấy {{ feature_lower }} theo mã định danh.
         /// </summary>
         public async Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id)
         {

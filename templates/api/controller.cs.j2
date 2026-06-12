@@ -10,7 +10,7 @@ using TmtCo.Mediator;
 namespace MyErp6.HttpApi.Public.PublicControllers
 {
     /// <summary>
-    /// Public API endpoints for {{ feature_name_plural }}.
+    /// Các endpoint API cho {{ feature_name_plural }}.
     /// </summary>
     [ApiController]
     [Authorize]
@@ -18,35 +18,35 @@ namespace MyErp6.HttpApi.Public.PublicControllers
     public class {{ feature_name }}Controller(IMediator mediator) : PublicControllerBase(mediator)
     {
         /// <summary>
-        /// Creates a new {{ feature_lower }}.
+        /// Tạo mới {{ feature_lower }}.
         /// </summary>
         [HttpPost]
         public async Task<TPosResult<{{ model_name }}>> PostAsync([FromBody] {{ upsert_dto_name }} model, CancellationToken cancellationToken)
             => await Mediator.Send(new Create{{ feature_name }}Command(model), cancellationToken);
 
         /// <summary>
-        /// Gets a {{ feature_lower }} by identifier.
+        /// Lấy {{ feature_lower }} theo mã định danh.
         /// </summary>
         [HttpGet("{id}")]
         public async Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id, CancellationToken cancellationToken)
             => await Mediator.Send(new GetById{{ feature_name }}Query(id), cancellationToken);
 
         /// <summary>
-        /// Gets a paged list of {{ feature_name_plural }}.
+        /// Lấy danh sách phân trang của {{ feature_name_plural }}.
         /// </summary>
         [HttpGet]
         public async Task<TPosPagedResult<{{ model_name }}>> GetAllAsync(CancellationToken cancellationToken, [FromQuery] TPosPagedRequest pagedRequest{{ filter_controller_params }})
             => await Mediator.Send(new GetAll{{ feature_name }}Query(pagedRequest{{ filter_ctor_args }}), cancellationToken);
 
         /// <summary>
-        /// Updates a {{ feature_lower }} by identifier.
+        /// Cập nhật {{ feature_lower }} theo mã định danh.
         /// </summary>
         [HttpPut("{id}")]
         public async Task<TPosResult> Update{{ feature_name }}Async(long id, [FromBody] {{ upsert_dto_name }} model, CancellationToken cancellationToken)
             => await Mediator.Send(new Update{{ feature_name }}Command(id, model), cancellationToken);
 
         /// <summary>
-        /// Deletes a {{ feature_lower }} by identifier.
+        /// Xóa {{ feature_lower }} theo mã định danh.
         /// </summary>
         [HttpDelete("{id}")]
         public async Task<TPosResult> DeleteAsync(long id, CancellationToken cancellationToken)

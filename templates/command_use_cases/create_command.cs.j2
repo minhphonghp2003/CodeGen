@@ -5,7 +5,7 @@ using MyErp6.Domain.Shared.TPosResult;
 namespace TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}.Commands
 {
     /// <summary>
-    /// Creates a new {{ feature_lower }}.
+    /// Tạo mới {{ feature_lower }}.
     /// </summary>
     public record Create{{ feature_name }}Command({{ upsert_dto_name }} Value) : ICommand<TPosResult<{{ model_name }}>>;
 }

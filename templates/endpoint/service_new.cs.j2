@@ -12,7 +12,7 @@ using TmtCo.Mediator;
 namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
 {
     /// <summary>
-    /// Implements {% if is_command %}write{% else %}read{% endif %} operations for {{ feature_name_plural }}.
+    /// Triển khai các thao tác {% if is_command %}ghi{% else %}đọc{% endif %} cho {{ feature_name_plural }}.
     /// </summary>
     public sealed class {{ service_class_name }}(
 {% if is_command %}        IMediator _mediator,
@@ -21,7 +21,7 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
         ) : {{ base_type }}({{ base_args }}), {{ service_interface_name }}
     {
         /// <summary>
-        /// Executes {{ endpoint_name }} for {{ feature_name_plural }}.
+        /// Thực thi {{ endpoint_name }} cho {{ feature_name_plural }}.
         /// </summary>
         public async Task<{{ tpos_result_type }}> {{ service_method_name }}({{ service_params }})
         {

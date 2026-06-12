@@ -10,7 +10,7 @@ using TmtCo.Mediator;
 namespace MyErp6.HttpApi.Public.PublicControllers
 {
     /// <summary>
-    /// Public API endpoints for {{ feature_name_plural }}.
+    /// Các endpoint API công khai cho {{ feature_name_plural }}.
     /// </summary>
     [ApiController]
     [Authorize]
@@ -18,7 +18,7 @@ namespace MyErp6.HttpApi.Public.PublicControllers
     public class {{ feature_name }}Controller(IMediator mediator) : PublicControllerBase(mediator)
     {
         /// <summary>
-        /// Executes {{ endpoint_name }} for {{ feature_name_plural }}.
+        /// Thực thi {{ endpoint_name }} cho {{ feature_name_plural }}.
         /// </summary>
         [{{ http_attribute }}{{ route_attribute }}]
         public async Task<{{ tpos_result_type }}> {{ endpoint_name }}Async({{ controller_params }})

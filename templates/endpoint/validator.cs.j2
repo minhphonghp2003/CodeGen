@@ -8,12 +8,12 @@ using TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}.Commands;
 namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Validators
 {
     /// <summary>
-    /// Validates {{ request_name }} before it reaches the command handler.
+    /// Xác thực {{ request_name }} trước khi nó đến tay command handler.
     /// </summary>
     public sealed class {{ request_name }}Validator : AbstractValidator<{{ request_name }}>
     {
         /// <summary>
-        /// Builds localized validation rules for {{ request_name }}.
+        /// Xây dựng các quy tắc xác thực có bản địa hóa cho {{ request_name }}.
         /// </summary>
         public {{ request_name }}Validator(IStringLocalizer<ValidationMessages> L)
         {

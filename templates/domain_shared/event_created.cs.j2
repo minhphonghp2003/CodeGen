@@ -5,12 +5,12 @@ using MyERP.Events.Bus.Entities;
 namespace MyErp6.Domain.Shared.Events.{{ feature_name_plural }}
 {
     /// <summary>
-    /// Domain event data raised when a {{ feature_lower }} is created.
+    /// Dữ liệu sự kiện domain được phát khi {{ feature_lower }} được tạo mới.
     /// </summary>
     public sealed class {{ feature_name }}CreatedEventData<TEntity> : EntityCreatedEventData<TEntity>, IEntityCreatedEventData
     {
         /// <summary>
-        /// Creates event data for a {{ feature_lower }} created event.
+        /// Tạo dữ liệu sự kiện cho sự kiện tạo mới {{ feature_lower }}.
         /// </summary>
         public {{ feature_name }}CreatedEventData(string host, TEntity entity, CurrentUserDto user) : base(entity)
         {
@@ -19,12 +19,12 @@ namespace MyErp6.Domain.Shared.Events.{{ feature_name_plural }}
         }
 
         /// <summary>
-        /// Gets the user who caused the event.
+        /// Lấy thông tin người dùng gây ra sự kiện.
         /// </summary>
         public CurrentUserDto Creator { get; set; }
 
         /// <summary>
-        /// Gets the host where the event was raised.
+        /// Lấy tên host nơi sự kiện được phát.
         /// </summary>
         public string Host { get;}
     }

@@ -5,17 +5,17 @@ using MyErp6.Domain.Shared.TPosResult;
 namespace MyErp6.Application.Contracts.{{ feature_name_plural }}
 {
     /// <summary>
-    /// Defines read operations for {{ feature_name_plural }}.
+    /// Định nghĩa các thao tác đọc cho {{ feature_name_plural }}.
     /// </summary>
     public interface I{{ feature_name }}QueryService
     {
         /// <summary>
-        /// Gets a {{ feature_lower }} by identifier.
+        /// Lấy {{ feature_lower }} theo mã định danh.
         /// </summary>
         Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id);
 
         /// <summary>
-        /// Gets a paged list of {{ feature_name_plural }}.
+        /// Lấy danh sách phân trang của {{ feature_name_plural }}.
         /// </summary>
         Task<TPosPagedResult<{{ model_name }}>> GetAllAsync({{ filter_service_params }}TPosPagedRequest pagedRequest, CancellationToken cancellationToken);
     }

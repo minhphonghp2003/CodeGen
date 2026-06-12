@@ -6,22 +6,22 @@ using TMT.MyErp6.Domain.Shared.Models;
 namespace MyErp6.Application.Contracts.{{ feature_name_plural }}
 {
     /// <summary>
-    /// Defines write operations for {{ feature_name_plural }}.
+    /// Định nghĩa các thao tác ghi cho {{ feature_name_plural }}.
     /// </summary>
     public interface I{{ feature_name }}CommandService : IMyErp6ApplicationWriteService<{{ entity_name }}, long>
     {
         /// <summary>
-        /// Creates a new {{ feature_lower }}.
+        /// Tạo mới {{ feature_lower }}.
         /// </summary>
         Task<TPosResult<{{ model_name }}>> CreateAsync({{ upsert_dto_name }} model, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Updates an existing {{ feature_lower }}.
+        /// Cập nhật {{ feature_lower }} hiện có.
         /// </summary>
         Task<TPosResult> UpdateAsync(long id, {{ upsert_dto_name }} model, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Deletes a {{ feature_lower }} by identifier.
+        /// Xóa {{ feature_lower }} theo mã định danh.
         /// </summary>
         Task<TPosResult> DeleteByIdAsync(long id, CancellationToken cancellationToken);
     }

@@ -7,7 +7,7 @@ using TmtCo.Mediator;
 namespace TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}
 {
     /// <summary>
-    /// Handles write requests for {{ feature_name_plural }}.
+    /// Xử lý các yêu cầu ghi cho {{ feature_name_plural }}.
     /// </summary>
     public sealed class {{ feature_name }}CommandHandler(I{{ feature_name }}CommandService _commandService) :
         IRequestHandler<Create{{ feature_name }}Command, TPosResult<{{ model_name }}>>,
@@ -15,19 +15,19 @@ namespace TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}
         IRequestHandler<Delete{{ feature_name }}Command, TPosResult>
     {
         /// <summary>
-        /// Handles create requests.
+        /// Xử lý yêu cầu tạo mới.
         /// </summary>
         public async Task<TPosResult<{{ model_name }}>> Handle(Create{{ feature_name }}Command request, CancellationToken cancellationToken)
             => await _commandService.CreateAsync(request.Value, cancellationToken);
 
         /// <summary>
-        /// Handles update requests.
+        /// Xử lý yêu cầu cập nhật.
         /// </summary>
         public async Task<TPosResult> Handle(Update{{ feature_name }}Command request, CancellationToken cancellationToken)
             => await _commandService.UpdateAsync(request.Id, request.Model, cancellationToken);
 
         /// <summary>
-        /// Handles delete requests.
+        /// Xử lý yêu cầu xóa.
         /// </summary>
         public async Task<TPosResult> Handle(Delete{{ feature_name }}Command request, CancellationToken cancellationToken)
             => await _commandService.DeleteByIdAsync(request.Id, cancellationToken);

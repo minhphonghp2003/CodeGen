@@ -6,7 +6,7 @@ using TmtCo.Mediator;
 namespace TMT.MyErp6.QueryUseCases.{{ feature_name_plural }}.Queries
 {
     /// <summary>
-    /// Gets a paged list of {{ feature_name_plural }}.
+    /// Lấy danh sách phân trang của {{ feature_name_plural }}.
     /// </summary>
     public record GetAll{{ feature_name }}Query(TPosPagedRequest PageRequest{{ filter_ctor_params }}) : IRequest<TPosPagedResult<{{ model_name }}>>;
 }

@@ -6,13 +6,13 @@ using TmtCo.Mediator;
 namespace TMT.MyErp6.{{ use_case }}.{{ feature_name_plural }}
 {
     /// <summary>
-    /// Handles {% if is_command %}commands{% else %}queries{% endif %} for {{ feature_name_plural }}.
+    /// Xử lý {% if is_command %}các lệnh{% else %}các truy vấn{% endif %} cho {{ feature_name_plural }}.
     /// </summary>
     public sealed class {{ handler_name }}({{ service_interface_name }} {{ service_param_name }}) :
         {{ handler_interface }}
     {
         /// <summary>
-        /// Handles {{ request_name }}.
+        /// Xử lý {{ request_name }}.
         /// </summary>
         public async Task<{{ tpos_result_type }}> Handle({{ request_name }} request, CancellationToken cancellationToken)
             => await {{ service_param_name }}.{{ service_method_name }}({{ handler_service_call_args }});

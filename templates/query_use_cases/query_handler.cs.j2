@@ -7,20 +7,20 @@ using TmtCo.Mediator;
 namespace TMT.MyErp6.QueryUseCases.{{ feature_name_plural }}
 {
     /// <summary>
-    /// Handles read requests for {{ feature_name_plural }}.
+    /// Xử lý các yêu cầu đọc cho {{ feature_name_plural }}.
     /// </summary>
     public sealed class {{ feature_name }}QueryHandler(I{{ feature_name }}QueryService _queryService) :
         IRequestHandler<GetById{{ feature_name }}Query, TPosResult<{{ model_name }}>>,
         IRequestHandler<GetAll{{ feature_name }}Query, TPosPagedResult<{{ model_name }}>>
     {
         /// <summary>
-        /// Handles get-by-id requests.
+        /// Xử lý yêu cầu lấy theo mã định danh.
         /// </summary>
         public async Task<TPosResult<{{ model_name }}>> Handle(GetById{{ feature_name }}Query request, CancellationToken cancellationToken)
             => await _queryService.GetByIdAsync(request.Id);
 
         /// <summary>
-        /// Handles paged list requests.
+        /// Xử lý yêu cầu danh sách phân trang.
         /// </summary>
         public async Task<TPosPagedResult<{{ model_name }}>> Handle(GetAll{{ feature_name }}Query request, CancellationToken cancellationToken)
             => await _queryService.GetAllAsync({{ filter_call_args }}request.PageRequest, cancellationToken);

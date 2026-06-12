@@ -7,20 +7,20 @@ using TmtCo.Mediator;
 namespace TMT.MyErp6.Application.{{ feature_name_plural }}.EventHandlers;
 
 /// <summary>
-/// Removes cached {{ feature_name_plural }} when write events are published.
+/// Xóa bộ nhớ đệm {{ feature_name_plural }} khi các sự kiện ghi được phát.
 /// </summary>
 public sealed class {{ feature_name }}CacheNotificationHandler(I{{ feature_name }}Cache _cache) :
     INotificationHandler<TmtCoDomainEventNotification<{{ feature_name }}UpdatedEventData<{{ entity_name }}>>>,
     INotificationHandler<TmtCoDomainEventNotification<{{ feature_name }}DeletedEventData<{{ entity_name }}>>>
 {
     /// <summary>
-    /// Removes cache when a {{ feature_lower }} is updated.
+    /// Xóa bộ nhớ đệm khi {{ feature_lower }} được cập nhật.
     /// </summary>
     public async Task Handle(TmtCoDomainEventNotification<{{ feature_name }}UpdatedEventData<{{ entity_name }}>> notification, CancellationToken cancellationToken)
         => await _cache.RemoveAsync(notification.DomainEvent.Entity.Id, cancellationToken);
 
     /// <summary>
-    /// Removes cache when a {{ feature_lower }} is deleted.
+    /// Xóa bộ nhớ đệm khi {{ feature_lower }} bị xóa.
     /// </summary>
     public async Task Handle(TmtCoDomainEventNotification<{{ feature_name }}DeletedEventData<{{ entity_name }}>> notification, CancellationToken cancellationToken)
             => await _cache.RemoveAsync(notification.DomainEvent.Entity.Id, cancellationToken);

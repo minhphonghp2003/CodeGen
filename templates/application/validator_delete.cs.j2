@@ -7,12 +7,12 @@ using TmtCo.Localization;
 namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Validators
 {
     /// <summary>
-    /// Validates delete requests for {{ feature_name_plural }}.
+    /// Xác thực yêu cầu xóa cho {{ feature_name_plural }}.
     /// </summary>
     public sealed class Delete{{ feature_name }}CommandValidator : AbstractValidator<Delete{{ feature_name }}Command>
     {
         /// <summary>
-        /// Builds localized validation rules.
+        /// Xây dựng các quy tắc xác thực có bản địa hóa.
         /// </summary>
         public Delete{{ feature_name }}CommandValidator(IStringLocalizer<ValidationMessages> L)
         {
