@@ -14,7 +14,7 @@ namespace TMT.MyErp6.QueryUseCases.{{ feature_name_plural }}
         IRequestHandler<GetAll{{ feature_name }}Query, TPosPagedResult<{{ model_name }}>>
     {
         /// <summary>
-        /// Xử lý yêu cầu lấy theo mã định danh.
+        /// Xử lý yêu cầu lấy theo id.
         /// </summary>
         public async Task<TPosResult<{{ model_name }}>> Handle(GetById{{ feature_name }}Query request, CancellationToken cancellationToken)
             => await _queryService.GetByIdAsync(request.Id);

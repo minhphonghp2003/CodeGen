@@ -21,7 +21,7 @@ namespace MyErp6.Application.Contracts.{{ feature_name_plural }}
         Task<TPosResult> UpdateAsync(long id, {{ upsert_dto_name }} model, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Xóa {{ feature_lower }} theo mã định danh.
+        /// Xóa {{ feature_lower }} theo id.
         /// </summary>
         Task<TPosResult> DeleteByIdAsync(long id, CancellationToken cancellationToken);
     }

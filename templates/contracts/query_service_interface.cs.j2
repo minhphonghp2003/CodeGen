@@ -10,7 +10,7 @@ namespace MyErp6.Application.Contracts.{{ feature_name_plural }}
     public interface I{{ feature_name }}QueryService
     {
         /// <summary>
-        /// Lấy {{ feature_lower }} theo mã định danh.
+        /// Lấy {{ feature_lower }} theo id.
         /// </summary>
         Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id);
 

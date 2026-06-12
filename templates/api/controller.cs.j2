@@ -25,7 +25,7 @@ namespace MyErp6.HttpApi.Public.PublicControllers
             => await Mediator.Send(new Create{{ feature_name }}Command(model), cancellationToken);
 
         /// <summary>
-        /// Lấy {{ feature_lower }} theo mã định danh.
+        /// Lấy {{ feature_lower }} theo id.
         /// </summary>
         [HttpGet("{id}")]
         public async Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id, CancellationToken cancellationToken)
@@ -39,14 +39,14 @@ namespace MyErp6.HttpApi.Public.PublicControllers
             => await Mediator.Send(new GetAll{{ feature_name }}Query(pagedRequest{{ filter_ctor_args }}), cancellationToken);
 
         /// <summary>
-        /// Cập nhật {{ feature_lower }} theo mã định danh.
+        /// Cập nhật {{ feature_lower }} theo id.
         /// </summary>
         [HttpPut("{id}")]
         public async Task<TPosResult> Update{{ feature_name }}Async(long id, [FromBody] {{ upsert_dto_name }} model, CancellationToken cancellationToken)
             => await Mediator.Send(new Update{{ feature_name }}Command(id, model), cancellationToken);
 
         /// <summary>
-        /// Xóa {{ feature_lower }} theo mã định danh.
+        /// Xóa {{ feature_lower }} theo id.
         /// </summary>
         [HttpDelete("{id}")]
         public async Task<TPosResult> DeleteAsync(long id, CancellationToken cancellationToken)

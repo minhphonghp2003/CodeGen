@@ -27,18 +27,19 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
         /// </summary>
         public async Task<TPosPagedResult<{{ model_name }}>> GetAllAsync({{ filter_service_params }}TPosPagedRequest pagedRequest, CancellationToken cancellationToken)
         {
+            var pagination = pagedRequest.ToPagination();
             var query = Where(e => true);
             var count = await query.CountAsync(cancellationToken);
             var data = await query
-                .Skip(pagedRequest.Skip ?? 0)
-                .Take(pagedRequest.Take ?? 20)
+                .Skip(pagination.Skip)
+                .Take(pagination.Take)
                 .Select(e => MyErp6Mapper.Map<{{ entity_name }}, {{ model_name }}>(e))
                 .ToListAsync(cancellationToken);
             return TPosPagedResult<{{ model_name }}>.Success(data, count);
         }
 
         /// <summary>
-        /// Lấy {{ feature_lower }} theo mã định danh.
+        /// Lấy {{ feature_lower }} theo id.
         /// </summary>
         public async Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id)
         {

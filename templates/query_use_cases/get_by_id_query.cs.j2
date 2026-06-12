@@ -5,7 +5,7 @@ using TmtCo.Mediator;
 namespace TMT.MyErp6.QueryUseCases.{{ feature_name_plural }}.Queries
 {
     /// <summary>
-    /// Lấy {{ feature_lower }} theo mã định danh.
+    /// Lấy {{ feature_lower }} theo id.
     /// </summary>
     public record GetById{{ feature_name }}Query(long Id) : IRequest<TPosResult<{{ model_name }}>>;
 }

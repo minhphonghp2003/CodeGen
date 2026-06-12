@@ -5,7 +5,7 @@ using MyErp6.Domain.Shared.TPosResult;
 namespace TMT.MyErp6.CommandUseCases.{{ feature_name_plural }}.Commands
 {
     /// <summary>
-    /// Cập nhật {{ feature_lower }} theo mã định danh.
+    /// Cập nhật {{ feature_lower }} theo id.
     /// </summary>
     public record Update{{ feature_name }}Command(long Id, {{ upsert_dto_name }} Model) : ICommand<TPosResult>;
 }

@@ -9,11 +9,11 @@
 # ============================================================
 
 # Feature name (singular, PascalCase)
-feature_name: ProductAttribute
+feature_name: ProductAttributeValue
 
 # Plural form. Default: feature_name + "s"
 # Use this for irregular plurals: category -> categories
-feature_name_plural: ProductAttributes
+feature_name_plural: ProductAttributeValues
 
 # Solution root directory (optional, override with -s on CLI)
 solution_dir: C:\Work\TPOSAPP
@@ -31,6 +31,7 @@ upsert_properties:
   - ["string", "Name", "true", ""]
   - ["string", "Code", "false", ""]
   - ["int", "Sequence", "false", ""]
+  - ["int", "AttributeId", "true", ""]
   # - ["int", "SortOrder", "false", "0"]
   # - ["bool", "IsActive", "true", "true"]
 
@@ -43,7 +44,10 @@ dto_properties:
   - ["string", "Name", "true", ""]
   - ["string", "Code", "false", ""]
   - ["int", "Sequence", "false", ""]
-  - ["bool", "CreateVariant", "false", "true"]
+  - ["int", "AttributeId", "true", ""]
+  - ["string", "AttributeName", "true", ""]
+  - ["string", "NameGet", "true", ""]
+  - ["string", "DateCreated", "true", ""]
 
 # ------------------------------------------------------------
 # GET ALL FILTERS (optional query params for paged list)
@@ -52,7 +56,7 @@ dto_properties:
 # Leave empty for TPosPagedRequest only.
 # ------------------------------------------------------------
 get_all_filters:
-  # - ["string?", "name", "FromQuery"]
+  - ["string?", "searchKey", "FromQuery"]
   # - ["long?", "parentId", "FromQuery"]
 
 dry_run: false

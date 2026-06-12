@@ -12,7 +12,7 @@ using ZiggyCreatures.Caching.Fusion;
 namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Caches
 {
     /// <summary>
-    /// Bộ nhớ đệm FusionCache cho {{ feature_name_plural }}.
+    /// Cache FusionCache cho {{ feature_name_plural }}.
     /// </summary>
     public sealed class {{ feature_name }}Cache(IFusionCache _fusionCache, ICurrentTenant _currentTenant, IReadRepositoryAsync<{{ entity_name }}, long> _repository)
         : MyErp6EntityCacheBase<{{ model_name }}, long>(_fusionCache, _currentTenant, "clientside@" + nameof({{ feature_name }}).ToLower() + "s"), I{{ feature_name }}Cache

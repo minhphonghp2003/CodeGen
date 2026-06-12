@@ -1,16 +1,13 @@
 namespace MyErp6.Application.Contracts.{{ feature_name_plural }}.Dtos
 {
-    /// <summary>
-    /// Hợp đồng dữ liệu upsert cho {{ feature_name_plural }}.
-    /// </summary>
     public class {{ upsert_dto_name }}
     {
 {% for prop in upsert_properties %}
         /// <summary>
         /// Lấy giá trị {{ split_words(prop[1])|lower }}.
         /// </summary>
-{% if prop[2] == "true" %}        [System.ComponentModel.DataAnnotations.Required]
-{% endif %}        public {% if prop[2] == "true" %}required {% endif %}{{ prop[0]|nullable_type(prop[2] == "true") }} {{ to_pascal_case(prop[1]) }} { get; init; }{% if prop[3] %} = {{ prop[3] }};{% endif %}
+
+       public {% if prop[2] == "true" %}required {% endif %}{{ prop[0]|nullable_type(prop[2] == "true") }} {{ to_pascal_case(prop[1]) }} { get; init; }{% if prop[3] %} = {{ prop[3] }};{% endif %}
 
 {% endfor %}
     }
