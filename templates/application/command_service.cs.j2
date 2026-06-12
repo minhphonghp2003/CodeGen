@@ -18,8 +18,8 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
     /// </summary>
     public sealed class {{ feature_name }}CommandService(
         IMediator _mediator,
-        IWriteRepositoryAsync<{{ entity_name }}, long> _repository,
-        IReadRepositoryAsync<{{ entity_name }}, long> _readRepository,
+        // IWriteRepositoryAsync<{{ entity_name }}, long> _repository,
+        // IReadRepositoryAsync<{{ entity_name }}, long> _readRepository,
         I{{ feature_name }}DomainService _domainService,
         IMyErp6ApplicationBaseService _baseService
         ) : MyErp6ApplicationWriteService<{{ entity_name }}, long>(_mediator, _repository, _baseService), I{{ feature_name }}CommandService

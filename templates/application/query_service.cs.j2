@@ -18,8 +18,8 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
     /// </summary>
     public sealed class {{ feature_name }}QueryService(
         IReadRepositoryAsync<{{ entity_name }}> _repository,
-        IMyErp6ApplicationBaseService _baseService,
-        I{{ feature_name }}Cache _cache
+        // I{{ feature_name }}Cache _cache,
+        IMyErp6ApplicationBaseService _baseService
         ) : MyErp6ApplicationReadService<{{ entity_name }}>(_repository, _baseService), I{{ feature_name }}QueryService
     {
         /// <summary>
@@ -30,8 +30,8 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
             var query = Where(e => true);
             var count = await query.CountAsync(cancellationToken);
             var data = await query
-                .Skip(pagedRequest.SkipCount)
-                .Take(pagedRequest.Limit)
+                .Skip(pagedRequest.Skip ?? 0)
+                .Take(pagedRequest.Take ?? 20)
                 .Select(e => MyErp6Mapper.Map<{{ entity_name }}, {{ model_name }}>(e))
                 .ToListAsync(cancellationToken);
             return TPosPagedResult<{{ model_name }}>.Success(data, count);
@@ -42,8 +42,9 @@ namespace TMT.MyErp6.Application.{{ feature_name_plural }}.Services
         /// </summary>
         public async Task<TPosResult<{{ model_name }}>> GetByIdAsync(long id)
         {
-            var result = _cache[id];
-            return TPosResult<{{ model_name }}>.Success(result);
+            throw new NotImplementedException();
+            // var result = _cache[id];
+            // return TPosResult<{{ model_name }}>.Success(result);
         }
     }
 }

@@ -95,6 +95,4 @@ def nullable_type(type_name: str, is_required: bool) -> str:
     if is_required:
         return type_name
     clean = type_name.rstrip("?")
-    if clean in _VALUE_TYPES:
-        return clean + "?"
-    return type_name
+    return clean + "?"
