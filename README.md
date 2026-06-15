@@ -12,3 +12,6 @@ another redis
 burpsuite  
 codex  
 postman  
+sourcetree  
+notepad++ 
+opencode  
