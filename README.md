@@ -11,7 +11,8 @@ gg
 another redis  
 burpsuite  
 codex  
-postman/bruno    
+postman/bruno  
 sourcetree  
-notepad++  
+notepad++ (alt)    
 opencode  
+mongodb  
