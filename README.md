@@ -7,3 +7,7 @@ nodejs
 rocketchat
 python
 gg
+another redis
+burpsuite
+codex
+postman
