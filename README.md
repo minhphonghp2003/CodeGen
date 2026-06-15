@@ -1,0 +1,9 @@
+docker
+git
+rider
+vscode
+dbeaver/ssms
+nodejs
+rocketchat
+python
+gg
